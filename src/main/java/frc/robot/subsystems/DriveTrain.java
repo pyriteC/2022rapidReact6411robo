@@ -8,24 +8,34 @@ package frc.robot.subsystems;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class DriveTrain extends SubsystemBase 
 {
-  Spark leftMotor;
-  Spark rightMotor;
+  Spark backLeftMotor;
+  Spark frontLeftMotor;
+  Spark backRightMotor;
+  Spark frontRightMotor;
+  MotorControllerGroup leftMotor;
+  MotorControllerGroup rightMotor;
   DifferentialDrive drive;
 
   /** Creates a new DriveTrain. */
   public DriveTrain() 
   {
-    leftMotor = new Spark(Constants.LEFT_MOTOR);
-    leftMotor .setInverted(true);
-    rightMotor = new Spark(Constants.RIGHT_MOTOR);
-    rightMotor .setInverted(false);
-
+    backLeftMotor = new Spark(Constants.BACK_LEFT_MOTOR);
+    backLeftMotor .setInverted(true);
+    frontLeftMotor = new Spark(Constants.FRONT_LEFT_MOTOR);
+    frontLeftMotor .setInverted(true);
+    backRightMotor = new Spark(Constants.BACK_RIGHT_MOTOR);
+    backRightMotor .setInverted(false);
+    frontRightMotor = new Spark(Constants.FRONT_RIGHT_MOTOR);
+    frontRightMotor .setInverted(false);
+    MotorControllerGroup leftMotor = new MotorControllerGroup(frontLeftMotor, backLeftMotor);
+    MotorControllerGroup rightMotor = new MotorControllerGroup(frontRightMotor, backRightMotor);
     drive = new DifferentialDrive(leftMotor, rightMotor);
   }
 

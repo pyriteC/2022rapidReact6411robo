@@ -14,8 +14,10 @@ package frc.robot;
  */
 public final class Constants {
     //need to correlate with pwm on robot 
-    public static final int LEFT_MOTOR = 0;
-    public static final int RIGHT_MOTOR = 3;
+    public static final int BACK_LEFT_MOTOR = 15;
+    public static final int BACK_RIGHT_MOTOR = 0;
+    public static final int FRONT_RIGHT_MOTOR = 1;
+    public static final int FRONT_LEFT_MOTOR = 14;
 
     public static final int XBOX_LEFT_Y_AXIS = 1;
     public static final int XBOX_LEFT_X_AXIS = 0;

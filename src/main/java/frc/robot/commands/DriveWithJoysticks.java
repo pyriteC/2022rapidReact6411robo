@@ -45,6 +45,7 @@ public class DriveWithJoysticks extends CommandBase
   @Override
   public void execute() 
   {
+    /*rookie solution arcade*/
     leftStickY = m_driveController.getRawAxis(Constants.XBOX_LEFT_Y_AXIS);
     leftStickX = m_driveController.getRawAxis(Constants.XBOX_LEFT_X_AXIS);
     
@@ -53,8 +54,15 @@ public class DriveWithJoysticks extends CommandBase
 
     driveTrain.setRightMotor(rightSpeed);
     driveTrain.setLeftMotor(leftSpeed);
+    /* */
 
+    //arcade method
+    //driveTrain.driveWithArcade(RobotContainer.driverJoystick, Constants.DRIVE_TRAIN_SPEED);
+
+    //tank method 
+    //driveTrain.driveWithTank(RobotContainer.driverJoystick, Constants.DRIVE_TRAIN_SPEED);
   }
+
 
   // Called once the command ends or is interrupted.
   @Override

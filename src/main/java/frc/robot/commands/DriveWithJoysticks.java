@@ -16,9 +16,6 @@ public class DriveWithJoysticks extends CommandBase
   private final XboxController m_driveController;
   private double leftStickX;
   private double leftStickY;
-
-  private double rightSpeed;
-  private double leftSpeed;
   /** Creates a new DriveWithJoysticks. */
   
   public DriveWithJoysticks(DriveTrain dt, XboxController driveController) 
@@ -33,11 +30,11 @@ public class DriveWithJoysticks extends CommandBase
   @Override
   public void initialize() 
   {
-    leftStickX = 0.0;
-    leftStickY = 0.0;
+    // leftStickX = 0.0;
+    // leftStickY = 0.0;
 
-    rightSpeed = 0.0;
-    leftSpeed = 0.0;
+    // rightSpeed = 0.0;
+    // leftSpeed = 0.0;
 
   }
 
@@ -45,7 +42,10 @@ public class DriveWithJoysticks extends CommandBase
   @Override
   public void execute() 
   {
-    /*rookie solution arcade*/
+      leftStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.XBOX_LEFT_Y_AXIS);
+      leftStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.XBOX_LEFT_X_AXIS);
+      driveTrain.actualDriveLol(leftStickY, leftStickX);
+    /*rookie solution arcade
     leftStickY = m_driveController.getRawAxis(Constants.XBOX_LEFT_Y_AXIS);
     leftStickX = m_driveController.getRawAxis(Constants.XBOX_LEFT_X_AXIS);
     
@@ -54,16 +54,22 @@ public class DriveWithJoysticks extends CommandBase
 
     driveTrain.setRightMotor(rightSpeed);
     driveTrain.setLeftMotor(leftSpeed);
-    /* */
+     */
 
     //arcade method
-    //driveTrain.driveWithArcade(RobotContainer.driverJoystick, Constants.DRIVE_TRAIN_SPEED);
+    // driveTrain.driveWithArcade(RobotContainer.driverJoystick, Constants.DRIVE_TRAIN_SPEED);
 
     //tank method 
     //driveTrain.driveWithTank(RobotContainer.driverJoystick, Constants.DRIVE_TRAIN_SPEED);
   }
 
+  public double GetDriverRawAxisX(final int axis) {
+    return m_driveController.getRawAxis(axis);
+  }
 
+  public double GetDriverRawAxisY(final int axis) {
+    return m_driveController.getRawAxis(axis);
+  }
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) 

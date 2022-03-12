@@ -4,11 +4,28 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Pneumatics extends SubsystemBase {
   /** Creates a new SolenoidUp. */
-  public Pneumatics() {}
+  private Solenoid solenoid;
+  public Pneumatics() 
+  {
+    solenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SOLENOID_ID );
+  }
+
+  public void solenoidUp()
+  {
+    solenoid.set(true);
+  }
+
+  public void solenoidDown()
+  {
+    solenoid.set(false);
+  }
 
   @Override
   public void periodic() {

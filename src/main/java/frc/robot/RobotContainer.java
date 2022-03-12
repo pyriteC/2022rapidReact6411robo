@@ -59,9 +59,9 @@ public class RobotContainer {
    */
   private void configureButtonBindings() 
   {
-    final JoystickButton intakeButton = new JoystickButton(driverJoystick, Constants.INTAKE_BUTTON);
+    // final JoystickButton intakeButton = new JoystickButton(driverJoystick, Constants.INTAKE_BUTTON);
 
-    intakeButton.whenPressed(m_intake);
+    // intakeButton.whenPressed(m_intake);
   }
 
   /**

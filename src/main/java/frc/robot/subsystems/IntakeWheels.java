@@ -4,11 +4,27 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.motorcontrol.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class IntakeWheels extends SubsystemBase {
   /** Creates a new IntakeWheels. */
-  public IntakeWheels() {}
+  private Victor intakeMotor;
+  public IntakeWheels() 
+  {
+    intakeMotor = new Victor(Constants.INTAKE_MOTOR);
+  }
+
+  public void setIntakeMotor()
+  {
+    intakeMotor.set(Constants.INTAKE_SPEED);
+  }
+
+  public void stopIntakeMotor()
+  {
+    intakeMotor.set(Constants.STOP_MOTOR);
+  }
 
   @Override
   public void periodic() {

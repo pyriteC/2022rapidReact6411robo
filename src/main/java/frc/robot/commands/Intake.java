@@ -28,12 +28,12 @@ public class Intake extends CommandBase {
     if (isUp = true)
     {
       m_pneumatics.solenoidDown();
-      m_intakeWheels.stopIntakeMotor();
+      //m_intakeWheels.stopIntakeMotor();
     }
     else 
     {
       m_pneumatics.solenoidUp();
-      m_intakeWheels.setIntakeMotor();
+      //m_intakeWheels.setIntakeMotor();
     }
   }
 

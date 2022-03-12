@@ -10,8 +10,9 @@ import frc.robot.Constants;
 
 public class IntakeWheels extends SubsystemBase {
   /** Creates a new IntakeWheels. */
-  private Victor intakeMotor;
-  public IntakeWheels() 
+private Victor intakeMotor;
+
+public IntakeWheels() 
   {
     intakeMotor = new Victor(Constants.INTAKE_MOTOR);
   }

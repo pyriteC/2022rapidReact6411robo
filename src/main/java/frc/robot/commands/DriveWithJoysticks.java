@@ -30,8 +30,8 @@ public class DriveWithJoysticks extends CommandBase
   @Override
   public void initialize() 
   {
-    leftStickX = 0.0;
-    leftStickY = 0.0;
+    // leftStickX = 0.0;
+    // leftStickY = 0.0;
 
     // rightSpeed = 0.0;
     // leftSpeed = 0.0;

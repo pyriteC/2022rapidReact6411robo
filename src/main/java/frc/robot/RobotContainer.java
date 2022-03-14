@@ -47,7 +47,6 @@ public class RobotContainer {
 
     driveForwardTimed = new DriveForwardTimed(driveTrain);
     driveForwardTimed .addRequirements(driveTrain);
-
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -62,7 +61,7 @@ public class RobotContainer {
   {
     final JoystickButton intakeButton = new JoystickButton(driverJoystick, Constants.INTAKE_BUTTON);
 
-     intakeButton.whenHeld(m_intake);
+     intakeButton.toggleWhenPressed(m_intake);
   }
 
   /**

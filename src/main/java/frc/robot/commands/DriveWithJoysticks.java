@@ -13,16 +13,20 @@ import frc.robot.subsystems.DriveTrain;
 public class DriveWithJoysticks extends CommandBase 
 {
   private final DriveTrain driveTrain;
-  private final XboxController m_driveController;
+  private final XboxController m_driveControllerRight;
+  private final XboxController m_driveControllerLeft;
+  private double rightStickX;
+  private double rightStickY;
   private double leftStickX;
   private double leftStickY;
   /** Creates a new DriveWithJoysticks. */
   
-  public DriveWithJoysticks(DriveTrain dt, XboxController driveController) 
+  public DriveWithJoysticks(DriveTrain dt, XboxController driveControllerRight, XboxController driveControllerLeft) 
   {
     // Use addRequirements() here to declare subsystem dependencies.
     driveTrain = dt;
-    m_driveController = driveController;
+    m_driveControllerRight = driveControllerRight;
+    m_driveControllerLeft = driveControllerLeft;
     addRequirements(driveTrain);
   }
 
@@ -42,9 +46,12 @@ public class DriveWithJoysticks extends CommandBase
   @Override
   public void execute() 
   {
+      rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.XBOX_LEFT_Y_AXIS);
+      rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.XBOX_LEFT_X_AXIS);
       leftStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.XBOX_LEFT_Y_AXIS);
-      leftStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.XBOX_LEFT_X_AXIS);
-      driveTrain.actualDriveLol(leftStickY, leftStickX);
+      rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.XBOX_LEFT_X_AXIS);
+      //driveTrain.actualArcadeDrive(rightStickY, rightStickX);
+      driveTrain.actualTankDrive(leftStickY, rightStickY);
     /*rookie solution arcade
     leftStickY = m_driveController.getRawAxis(Constants.XBOX_LEFT_Y_AXIS);
     leftStickX = m_driveController.getRawAxis(Constants.XBOX_LEFT_X_AXIS);
@@ -64,12 +71,22 @@ public class DriveWithJoysticks extends CommandBase
   }
 
   public double GetDriverRawAxisX(final int axis) {
-    return m_driveController.getRawAxis(axis);
+    return m_driveControllerRight.getRawAxis(axis);
   }
 
   public double GetDriverRawAxisY(final int axis) {
-    return m_driveController.getRawAxis(axis);
+    return m_driveControllerRight.getRawAxis(axis);
   }
+
+  public double GetDriverRawAxisLeftX(final int axis) {
+    return m_driveControllerLeft.getRawAxis(axis);
+  }
+
+  public double GetDriverRawAxisLeftY(final int axis) {
+    return m_driveControllerLeft.getRawAxis(axis);
+  }
+
+
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) 

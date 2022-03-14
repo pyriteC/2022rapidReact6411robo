@@ -29,7 +29,8 @@ public class RobotContainer {
   private final DriveTrain driveTrain;
   private final DriveWithJoysticks driveWithJoysticks;
   private final DriveForwardTimed driveForwardTimed;
-  public static XboxController driverJoystick;
+  public static XboxController driverJoystickRight;
+  public static XboxController driverJoystickLeft;
 
   private final IntakeWheels m_intakeWheels = new IntakeWheels();
   private final Pneumatics m_pneumatics = new Pneumatics();
@@ -38,10 +39,11 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() 
   {
-    driverJoystick = new XboxController(Constants.JOYSTICK_NUMBER);
+    driverJoystickRight = new XboxController(Constants.JOYSTICK_RIGHT_USB_NUMBER);
+    driverJoystickLeft = new XboxController(Constants.JOYSTICK_LEFT_USB_NUMBER);
 
     driveTrain = new DriveTrain();
-    driveWithJoysticks = new DriveWithJoysticks(driveTrain, driverJoystick);
+    driveWithJoysticks = new DriveWithJoysticks(driveTrain, driverJoystickRight, driverJoystickLeft);
     driveWithJoysticks.addRequirements(driveTrain);
     driveTrain.setDefaultCommand(driveWithJoysticks);
 
@@ -59,7 +61,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() 
   {
-    final JoystickButton intakeButton = new JoystickButton(driverJoystick, Constants.INTAKE_BUTTON);
+    final JoystickButton intakeButton = new JoystickButton(driverJoystickRight, Constants.INTAKE_BUTTON);
 
      intakeButton.toggleWhenPressed(m_intake);
   }

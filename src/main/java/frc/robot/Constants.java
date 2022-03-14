@@ -29,8 +29,9 @@ public final class Constants {
     public static final int JOYSTICK_NUMBER = 0;
     public static final double TURN_RAD = 1.0;
     public static final int TELEOP_SPEED = 1;
-    public static final int SOLENOID_ID = 4;
-    public static final int INTAKE_MOTOR = 5;
+    public static final int SOLENOID_ID_1 = 0;
+    public static final int SOLENOID_ID_2 = 1;
+    public static final int INTAKE_MOTOR = 4;
     public static final double INTAKE_SPEED = 0.4;
     public static final double STOP_MOTOR = 0;
     public static final int INTAKE_BUTTON = 3;

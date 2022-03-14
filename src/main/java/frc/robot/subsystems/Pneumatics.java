@@ -11,20 +11,24 @@ import frc.robot.Constants;
 
 public class Pneumatics extends SubsystemBase {
   /** Creates a new SolenoidUp. */
-  private Solenoid solenoid;
+  private Solenoid solenoid1;
+  private Solenoid solenoid2;
   public Pneumatics() 
   {
-    solenoid = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SOLENOID_ID );
+    solenoid1 = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SOLENOID_ID_1 );
+    solenoid2 = new Solenoid(PneumaticsModuleType.CTREPCM, Constants.SOLENOID_ID_2 );
   }
 
   public void solenoidUp()
   {
-    solenoid.set(true);
+    solenoid1.set(true);
+    solenoid2.set(true);
   }
 
   public void solenoidDown()
   {
-    solenoid.set(false);
+    solenoid1.set(false);
+    solenoid2.set(false);
   }
 
   @Override

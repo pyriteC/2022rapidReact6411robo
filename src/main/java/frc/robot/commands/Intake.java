@@ -24,17 +24,20 @@ public class Intake extends CommandBase {
   @Override
   public void initialize() 
   {
-    isUp = !isUp;
-    if (isUp = true)
-    {
-      m_pneumatics.solenoidDown();
-      //m_intakeWheels.stopIntakeMotor();
-    }
-    else 
-    {
-      m_pneumatics.solenoidUp();
-      //m_intakeWheels.setIntakeMotor();
-    }
+    // isUp = !isUp;
+    // if (isUp = true)
+    // {
+    //   m_pneumatics.solenoidDown();
+    //   //m_intakeWheels.stopIntakeMotor();
+    // }
+    // else 
+    // {
+    //   m_pneumatics.solenoidUp();
+    //   //m_intakeWheels.setIntakeMotor();
+    // }
+
+    m_pneumatics.solenoidUp();
+    m_intakeWheels.setIntakeMotor();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -47,7 +50,11 @@ public class Intake extends CommandBase {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) 
+  {
+    m_pneumatics.solenoidDown();
+    m_intakeWheels.stopIntakeMotor();
+  }
 
   // Returns true when the command should end.
   @Override

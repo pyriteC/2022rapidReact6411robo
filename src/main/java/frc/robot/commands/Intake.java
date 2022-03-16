@@ -36,7 +36,7 @@ public class Intake extends CommandBase {
     //   //m_intakeWheels.setIntakeMotor();
     // }
 
-    m_pneumatics.solenoidUp();
+    m_pneumatics.solenoidDown();
     m_intakeWheels.setIntakeMotor();
   }
 
@@ -52,7 +52,7 @@ public class Intake extends CommandBase {
   @Override
   public void end(boolean interrupted) 
   {
-    m_pneumatics.solenoidDown();
+    m_pneumatics.solenoidUp();
     m_intakeWheels.stopIntakeMotor();
   }
 

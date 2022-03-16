@@ -19,6 +19,8 @@ public class DriveWithJoysticks extends CommandBase
   private double rightStickY;
   private double leftStickX;
   private double leftStickY;
+  private double righty;
+  private double lefty;
   /** Creates a new DriveWithJoysticks. */
   
   public DriveWithJoysticks(DriveTrain dt, XboxController driveControllerRight, XboxController driveControllerLeft) 
@@ -46,12 +48,14 @@ public class DriveWithJoysticks extends CommandBase
   @Override
   public void execute() 
   {
-      rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.XBOX_LEFT_Y_AXIS);
-      rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.XBOX_LEFT_X_AXIS);
-      leftStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.XBOX_LEFT_Y_AXIS);
-      rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.XBOX_LEFT_X_AXIS);
+      rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.XBOX_RIGHT_Y_AXIS) * -1;
+      rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.XBOX_RIGHT_X_AXIS) * -1;
+      leftStickY = Constants.TELEOP_SPEED * GetDriverRawAxisLeftY(Constants.XBOX_LEFT_Y_AXIS)* -1;
+      leftStickX = Constants.TELEOP_SPEED * GetDriverRawAxisLeftX(Constants.XBOX_LEFT_X_AXIS)* -1;
       //driveTrain.actualArcadeDrive(rightStickY, rightStickX);
-      driveTrain.actualTankDrive(leftStickY, rightStickY);
+       driveTrain.actualTankDrive(leftStickY, rightStickY);
+      //  driveTrain.setLeftMotor(leftStickY);
+      //  driveTrain.setRightMotor(rightStickY);
     /*rookie solution arcade
     leftStickY = m_driveController.getRawAxis(Constants.XBOX_LEFT_Y_AXIS);
     leftStickX = m_driveController.getRawAxis(Constants.XBOX_LEFT_X_AXIS);

@@ -21,18 +21,20 @@ public final class Constants {
 
     public static final int XBOX_LEFT_Y_AXIS = 1;
     public static final int XBOX_LEFT_X_AXIS = 0;
-    public static final int XBOX_RIGHT_Y_AXIS = 5;
+    public static final int XBOX_RIGHT_Y_AXIS = 1;
+    public static final int XBOX_RIGHT_X_AXIS = 0;
 
     public static final double DRIVE_TRAIN_SPEED = .7;
     public static final double DRIVE_FORWARD_TIME = 3.0;
     public static final double AUTOMOUS_SPEED = 0.4;
-    public static final int JOYSTICK_NUMBER = 0;
+    public static final int JOYSTICK_RIGHT_USB_NUMBER = 0;
+    public static final int JOYSTICK_LEFT_USB_NUMBER = 1;
     public static final double TURN_RAD = 1.0;
-    public static final int TELEOP_SPEED = 1;
+    public static final double TELEOP_SPEED = .75;
     public static final int SOLENOID_ID_1 = 0;
     public static final int SOLENOID_ID_2 = 1;
     public static final int INTAKE_MOTOR = 4;
-    public static final double INTAKE_SPEED = .9;
+    public static final double INTAKE_SPEED = .5;
     public static final double STOP_MOTOR = 0;
     public static final int INTAKE_BUTTON = 3;
 }

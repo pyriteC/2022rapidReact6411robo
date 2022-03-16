@@ -74,9 +74,13 @@ public class DriveTrain extends SubsystemBase
     drive.stopMotor();
   }
 
-  public void actualDriveLol(double speed, double turn) {
+  public void actualArcadeDrive(double speed, double turn) {
     drive.arcadeDrive(-speed, turn);
   }
   
+  public void actualTankDrive(double left, double right)
+  {
+    drive.tankDrive(left, right);
+  }
 
 }

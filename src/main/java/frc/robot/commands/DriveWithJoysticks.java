@@ -48,10 +48,10 @@ public class DriveWithJoysticks extends CommandBase
   @Override
   public void execute() 
   {
-      rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.XBOX_RIGHT_Y_AXIS) * -1;
-      rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.XBOX_RIGHT_X_AXIS) * -1;
-      leftStickY = Constants.TELEOP_SPEED * GetDriverRawAxisLeftY(Constants.XBOX_LEFT_Y_AXIS)* -1;
-      leftStickX = Constants.TELEOP_SPEED * GetDriverRawAxisLeftX(Constants.XBOX_LEFT_X_AXIS)* -1;
+      rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.XBOX_RIGHT_Y_AXIS) * -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
+      rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.XBOX_RIGHT_X_AXIS) * -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
+      leftStickY = Constants.TELEOP_SPEED * GetDriverRawAxisLeftY(Constants.XBOX_LEFT_Y_AXIS)* -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
+      leftStickX = Constants.TELEOP_SPEED * GetDriverRawAxisLeftX(Constants.XBOX_LEFT_X_AXIS)* -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
       //driveTrain.actualArcadeDrive(rightStickY, rightStickX);
        driveTrain.actualTankDrive(leftStickY, rightStickY);
       //  driveTrain.setLeftMotor(leftStickY);
@@ -90,6 +90,10 @@ public class DriveWithJoysticks extends CommandBase
     return m_driveControllerLeft.getRawAxis(axis);
   }
 
+  public double getDriverSliderAxis(final int axis)
+  {
+    return m_driveControllerRight.getRawAxis(axis);
+  }
 
   // Called once the command ends or is interrupted.
   @Override

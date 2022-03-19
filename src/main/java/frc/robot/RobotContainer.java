@@ -9,8 +9,10 @@ import edu.wpi.first.wpilibj.PneumaticsBase;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.DriveForwardTimed;
 import frc.robot.commands.DriveWithJoysticks;
+import frc.robot.commands.FeederMove;
 import frc.robot.commands.Intake;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.IntakeWheels;
 import frc.robot.subsystems.Pneumatics;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -35,6 +37,8 @@ public class RobotContainer {
   private final IntakeWheels m_intakeWheels = new IntakeWheels();
   private final Pneumatics m_pneumatics = new Pneumatics();
   private final Intake m_intake = new Intake(m_pneumatics, m_intakeWheels);
+  private final Feeder m_feeder = new Feeder();
+  private final FeederMove m_moveFeed = new FeederMove(m_feeder);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() 
@@ -47,7 +51,7 @@ public class RobotContainer {
     driveWithJoysticks.addRequirements(driveTrain);
     driveTrain.setDefaultCommand(driveWithJoysticks);
 
-    driveForwardTimed = new DriveForwardTimed(driveTrain);
+    driveForwardTimed = new DriveForwardTimed(driveTrain, m_intakeWheels,m_pneumatics );
     driveForwardTimed .addRequirements(driveTrain);
     // Configure the button bindings
     configureButtonBindings();
@@ -64,6 +68,11 @@ public class RobotContainer {
     final JoystickButton intakeButton = new JoystickButton(driverJoystickRight, Constants.INTAKE_BUTTON);
 
      intakeButton.toggleWhenPressed(m_intake);
+
+    final JoystickButton feederButton = new JoystickButton(driverJoystickRight, Constants.FEED_BUTTON);
+
+    feederButton.toggleWhenPressed(m_moveFeed);
+    
   }
 
   /**

@@ -48,12 +48,12 @@ public class DriveWithJoysticks extends CommandBase
   @Override
   public void execute() 
   {
-      rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.XBOX_RIGHT_Y_AXIS) * -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
-      rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.XBOX_RIGHT_X_AXIS) * -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
-      leftStickY = Constants.TELEOP_SPEED * GetDriverRawAxisLeftY(Constants.XBOX_LEFT_Y_AXIS)* -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
-      leftStickX = Constants.TELEOP_SPEED * GetDriverRawAxisLeftX(Constants.XBOX_LEFT_X_AXIS)* -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
+      rightStickY = Constants.TELEOP_SPEED * getDriverRawAxisY(Constants.XBOX_RIGHT_Y_AXIS) * -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
+      rightStickX = Constants.TELEOP_SPEED * getDriverRawAxisX(Constants.XBOX_RIGHT_X_AXIS) * -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
+      leftStickY = Constants.TELEOP_SPEED * getDriverRawAxisLeftY(Constants.XBOX_LEFT_Y_AXIS)* -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
+      leftStickX = Constants.TELEOP_SPEED * getDriverRawAxisLeftX(Constants.XBOX_LEFT_X_AXIS)* -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
       //driveTrain.actualArcadeDrive(rightStickY, rightStickX);
-       driveTrain.actualTankDrive(leftStickY, rightStickY);
+      driveTrain.actualTankDrive(leftStickY, rightStickY);
       //  driveTrain.setLeftMotor(leftStickY);
       //  driveTrain.setRightMotor(rightStickY);
     /*rookie solution arcade
@@ -74,19 +74,19 @@ public class DriveWithJoysticks extends CommandBase
     //driveTrain.driveWithTank(RobotContainer.driverJoystick, Constants.DRIVE_TRAIN_SPEED);
   }
 
-  public double GetDriverRawAxisX(final int axis) {
+  public double getDriverRawAxisX(final int axis) {
     return m_driveControllerRight.getRawAxis(axis);
   }
 
-  public double GetDriverRawAxisY(final int axis) {
+  public double getDriverRawAxisY(final int axis) {
     return m_driveControllerRight.getRawAxis(axis);
   }
 
-  public double GetDriverRawAxisLeftX(final int axis) {
+  public double getDriverRawAxisLeftX(final int axis) {
     return m_driveControllerLeft.getRawAxis(axis);
   }
 
-  public double GetDriverRawAxisLeftY(final int axis) {
+  public double getDriverRawAxisLeftY(final int axis) {
     return m_driveControllerLeft.getRawAxis(axis);
   }
 

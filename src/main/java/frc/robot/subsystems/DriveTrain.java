@@ -10,15 +10,16 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
+import edu.wpi.first.wpilibj.motorcontrol.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
 public class DriveTrain extends SubsystemBase 
 {
-  Spark backLeftMotor;
-  Spark frontLeftMotor;
-  Spark backRightMotor;
-  Spark frontRightMotor;
+  Victor backLeftMotor;
+  Victor frontLeftMotor;
+  Victor backRightMotor;
+  Victor frontRightMotor;
   MotorControllerGroup leftMotor;
   MotorControllerGroup rightMotor;
   DifferentialDrive drive;
@@ -26,13 +27,13 @@ public class DriveTrain extends SubsystemBase
   /** Creates a new DriveTrain. */
   public DriveTrain() 
   {
-    backLeftMotor = new Spark(Constants.BACK_LEFT_MOTOR);
+    backLeftMotor = new Victor(Constants.BACK_LEFT_MOTOR);
     backLeftMotor .setInverted(true);
-    frontLeftMotor = new Spark(Constants.FRONT_LEFT_MOTOR);
+    frontLeftMotor = new Victor(Constants.FRONT_LEFT_MOTOR);
     frontLeftMotor .setInverted(true);
-    backRightMotor = new Spark(Constants.BACK_RIGHT_MOTOR);
+    backRightMotor = new Victor(Constants.BACK_RIGHT_MOTOR);
     backRightMotor .setInverted(false);
-    frontRightMotor = new Spark(Constants.FRONT_RIGHT_MOTOR);
+    frontRightMotor = new Victor(Constants.FRONT_RIGHT_MOTOR);
     frontRightMotor .setInverted(false);
     MotorControllerGroup leftMotor = new MotorControllerGroup(frontLeftMotor, backLeftMotor);
     MotorControllerGroup rightMotor = new MotorControllerGroup(frontRightMotor, backRightMotor);

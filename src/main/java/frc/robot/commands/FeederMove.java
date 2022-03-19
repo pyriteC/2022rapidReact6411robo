@@ -5,45 +5,39 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.IntakeWheels;
-import frc.robot.subsystems.Pneumatics;
+import frc.robot.subsystems.Feeder;
 
-public class Intake extends CommandBase {
-  /** Creates a new PneumaticsUp. */
-  
-  private Pneumatics m_pneumatics;
-  private IntakeWheels m_intakeWheels;
-  
-  public Intake(Pneumatics p, IntakeWheels i ) {
+public class FeederMove extends CommandBase {
+  /** Creates a new FeederMove. */
+  private Feeder m_feeder;
+
+  public FeederMove(Feeder feed) 
+  {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_pneumatics = p;
-    m_intakeWheels = i;
-    addRequirements(m_pneumatics, m_intakeWheels);
+    m_feeder = feed;
+    addRequirements(m_feeder);;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() 
   {
-
-    m_pneumatics.solenoidDown();
-    m_intakeWheels.setIntakeMotor();
+    m_feeder.setBottomMotorSpeed();
+    m_feeder.setSideMotorSpeed();
   }
+
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() 
-  {
-    
-
-  }
+  {}
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) 
   {
-    m_pneumatics.solenoidUp();
-    m_intakeWheels.stopIntakeMotor();
+    m_feeder.stopBottomMotor();
+    m_feeder.stopSideMotor();
   }
 
   // Returns true when the command should end.

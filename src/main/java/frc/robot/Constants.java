@@ -23,6 +23,7 @@ public final class Constants {
     public static final int XBOX_LEFT_X_AXIS = 0;
     public static final int XBOX_RIGHT_Y_AXIS = 1;
     public static final int XBOX_RIGHT_X_AXIS = 0;
+    public static final int XBOX_SLIDER_AXIS = 3;
 
     public static final double DRIVE_TRAIN_SPEED = .7;
     public static final double DRIVE_FORWARD_TIME = 3.0;
@@ -37,4 +38,9 @@ public final class Constants {
     public static final double INTAKE_SPEED = .5;
     public static final double STOP_MOTOR = 0;
     public static final int INTAKE_BUTTON = 3;
+    public static final int SIDE_TOWER_MOTOR = 0;
+    public static final int BOTTOM_TOWER_MOTOR = 0;
+    public static final double FEEDER_SPEED = 0;
+    public static final int FEED_BUTTON = 0;
+    public static final int FEED_DIRECTION_BUTTON = 0;
 }

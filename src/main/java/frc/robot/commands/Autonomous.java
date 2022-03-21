@@ -8,17 +8,26 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.IntakeWheels;
+import frc.robot.subsystems.Pneumatics;
 
-public class DriveForwardTimed extends CommandBase {
-  DriveTrain driveTrain;
+public class Autonomous extends CommandBase {
+  private DriveTrain driveTrain;
   private boolean finish = false;
-  Timer timer;
+  private IntakeWheels intakeWheels;
+  private Pneumatics inPnuematics;
+  private Timer moveTimer;
+  private Timer intakeTimer;
   /** Creates a new DriveForwardTimed. */
-  public DriveForwardTimed(DriveTrain dt) 
+  public Autonomous(DriveTrain dt, IntakeWheels iw, Pneumatics pn) 
   {
+
     driveTrain = dt;
-    addRequirements(driveTrain);
-    timer = new Timer();
+    intakeWheels  = iw;
+    inPnuematics = pn;
+    addRequirements(driveTrain, intakeWheels, inPnuematics);
+    moveTimer = new Timer();
+    intakeTimer = new Timer();
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -26,11 +35,20 @@ public class DriveForwardTimed extends CommandBase {
   @Override
   public void initialize() 
   {
-    timer.reset();
-    timer.start();
-    while(timer.get() < Constants.DRIVE_FORWARD_TIME)
+    moveTimer.reset();
+    moveTimer.start();
+    intakeTimer.reset();
+    while(moveTimer.get() < Constants.DRIVE_FORWARD_TIME)
     {
       driveTrain.driveForward(Constants.AUTOMOUS_SPEED);
+    }
+    intakeTimer.start();
+    while(intakeTimer.get()< Constants.AUTO_INTAKE_TIME)
+    {
+      driveTrain.driveForward(Constants.AUTOMOUS_SPEED);
+      inPnuematics.solenoidUp();
+      intakeWheels.setIntakeMotor();
+
     }
     finish = true;
   }

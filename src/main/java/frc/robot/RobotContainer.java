@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.PneumaticsBase;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.DriveForwardTimed;
+import frc.robot.commands.Autonomous;
 import frc.robot.commands.DriveWithJoysticks;
 import frc.robot.commands.FeederMove;
 import frc.robot.commands.Intake;
@@ -30,7 +30,7 @@ public class RobotContainer {
   //Drivetrian declair
   private final DriveTrain driveTrain;
   private final DriveWithJoysticks driveWithJoysticks;
-  private final DriveForwardTimed driveForwardTimed;
+  private final Autonomous driveForwardTimed;
   public static XboxController driverJoystickRight;
   public static XboxController driverJoystickLeft;
 
@@ -51,7 +51,7 @@ public class RobotContainer {
     driveWithJoysticks.addRequirements(driveTrain);
     driveTrain.setDefaultCommand(driveWithJoysticks);
 
-    driveForwardTimed = new DriveForwardTimed(driveTrain, m_intakeWheels,m_pneumatics );
+    driveForwardTimed = new Autonomous(driveTrain, m_intakeWheels,m_pneumatics );
     driveForwardTimed .addRequirements(driveTrain);
     // Configure the button bindings
     configureButtonBindings();

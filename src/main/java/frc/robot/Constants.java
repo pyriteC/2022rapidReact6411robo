@@ -15,9 +15,12 @@ package frc.robot;
 public final class Constants {
     //need to correlate with pwm on robot 
     public static final int BACK_LEFT_MOTOR = 0;
-    public static final int BACK_RIGHT_MOTOR = 3;
-    public static final int FRONT_RIGHT_MOTOR = 2;
     public static final int FRONT_LEFT_MOTOR = 1;
+    public static final int FRONT_RIGHT_MOTOR = 2;
+    public static final int BACK_RIGHT_MOTOR = 3;
+    public static final int INTAKE_MOTOR = 4;
+    public static final int SIDE_TOWER_MOTOR = 5;
+    public static final int BOTTOM_TOWER_MOTOR = 6;
 
     public static final int XBOX_LEFT_Y_AXIS = 1;
     public static final int XBOX_LEFT_X_AXIS = 0;
@@ -34,13 +37,11 @@ public final class Constants {
     public static final double TELEOP_SPEED = .75;
     public static final int SOLENOID_ID_1 = 0;
     public static final int SOLENOID_ID_2 = 1;
-    public static final int INTAKE_MOTOR = 4;
     public static final double INTAKE_SPEED = .5;
     public static final double STOP_MOTOR = 0;
     public static final int INTAKE_BUTTON = 3;
-    public static final int SIDE_TOWER_MOTOR = 0;
-    public static final int BOTTOM_TOWER_MOTOR = 0;
-    public static final double FEEDER_SPEED = 0;
-    public static final int FEED_BUTTON = 0;
-    public static final int FEED_DIRECTION_BUTTON = 0;
+    public static final double FEEDER_SPEED = 0.5;
+    public static final int FEED_BUTTON = 2;
+    // public static final int FEED_DIRECTION_BUTTON = 0;
+    public static final double AUTO_INTAKE_TIME = 0;
 }

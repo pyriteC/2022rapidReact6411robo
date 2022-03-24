@@ -7,17 +7,18 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import limelightvision.limelight.frc.LimeLight;
 
-public class limeLightSub extends SubsystemBase {
+public class LimeLightSub extends SubsystemBase {
   /** Creates a new limeLight. */
   public LimeLight limeLight;
 
-  public limeLightSub() {
+  public LimeLightSub() {
     limeLight = new LimeLight();
   }
 
   @Override
   public void periodic() { }
-  
+
   public LimeLight getLimeLight(){
     return limeLight;
+  }
 }

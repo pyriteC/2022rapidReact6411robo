@@ -14,7 +14,7 @@ public class DriveWithJoysticks extends CommandBase
 {
   private final DriveTrain driveTrain;
   private final XboxController m_driveControllerRight;
-  private final XboxController m_driveControllerLeft;
+
   private double rightStickX;
   private double rightStickY;
   private double leftStickX;
@@ -23,12 +23,11 @@ public class DriveWithJoysticks extends CommandBase
   private double lefty;
   /** Creates a new DriveWithJoysticks. */
   
-  public DriveWithJoysticks(DriveTrain dt, XboxController driveControllerRight, XboxController driveControllerLeft) 
+  public DriveWithJoysticks(DriveTrain dt, XboxController driveControllerRight) 
   {
     // Use addRequirements() here to declare subsystem dependencies.
     driveTrain = dt;
     m_driveControllerRight = driveControllerRight;
-    m_driveControllerLeft = driveControllerLeft;
     addRequirements(driveTrain);
   }
 
@@ -53,7 +52,7 @@ public class DriveWithJoysticks extends CommandBase
       leftStickY = Constants.TELEOP_SPEED * getDriverRawAxisLeftY(Constants.XBOX_LEFT_Y_AXIS)* -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
       leftStickX = Constants.TELEOP_SPEED * getDriverRawAxisLeftX(Constants.XBOX_LEFT_X_AXIS)* -1 * (getDriverSliderAxis(Constants.XBOX_SLIDER_AXIS) + 1) /2;
       //driveTrain.actualArcadeDrive(rightStickY, rightStickX);
-      driveTrain.actualTankDrive(leftStickY, rightStickY);
+      driveTrain.actualTankDrive(leftStickY, leftStickY);
       //  driveTrain.setLeftMotor(leftStickY);
       //  driveTrain.setRightMotor(rightStickY);
     /*rookie solution arcade

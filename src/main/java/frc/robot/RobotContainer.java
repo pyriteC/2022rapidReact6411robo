@@ -31,28 +31,28 @@ public class RobotContainer {
   private final DriveTrain driveTrain;
   private final DriveWithJoysticks driveWithJoysticks;
   private final Autonomous driveForwardTimed;
-  public static XboxController driverJoystickRight;
-  public static XboxController driverJoystickLeft;
+  public static XboxController xBoxController;
 
   private final IntakeWheels m_intakeWheels = new IntakeWheels();
   private final Pneumatics m_pneumatics = new Pneumatics();
   private final Intake m_intake = new Intake(m_pneumatics, m_intakeWheels);
   private final Feeder m_feeder = new Feeder();
-  private final FeederMove m_moveFeed = new FeederMove(m_feeder);
+  private final FeederMove m_moveFeed ;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() 
   {
-    driverJoystickRight = new XboxController(Constants.JOYSTICK_RIGHT_USB_NUMBER);
-    driverJoystickLeft = new XboxController(Constants.JOYSTICK_LEFT_USB_NUMBER);
+    xBoxController = new XboxController(Constants.XBOX_USB_NUMBER);
 
     driveTrain = new DriveTrain();
-    driveWithJoysticks = new DriveWithJoysticks(driveTrain, driverJoystickRight, driverJoystickLeft);
+    driveWithJoysticks = new DriveWithJoysticks(driveTrain, xBoxController);
     driveWithJoysticks.addRequirements(driveTrain);
     driveTrain.setDefaultCommand(driveWithJoysticks);
 
     driveForwardTimed = new Autonomous(driveTrain, m_intakeWheels,m_pneumatics );
     driveForwardTimed .addRequirements(driveTrain);
+
+   m_moveFeed = new FeederMove(m_feeder, xBoxController.getPOV());
     // Configure the button bindings
     configureButtonBindings();
   }
@@ -65,11 +65,11 @@ public class RobotContainer {
    */
   private void configureButtonBindings() 
   {
-    final JoystickButton intakeButton = new JoystickButton(driverJoystickRight, Constants.INTAKE_BUTTON);
+    final JoystickButton intakeButton = new JoystickButton(xBoxController, Constants.INTAKE_BUTTON);
 
      intakeButton.toggleWhenPressed(m_intake);
 
-    final JoystickButton feederButton = new JoystickButton(driverJoystickRight, Constants.FEED_BUTTON);
+    final JoystickButton feederButton = new JoystickButton(xBoxController, Constants.FEED_BUTTON);
 
     feederButton.toggleWhenPressed(m_moveFeed);
     

@@ -8,13 +8,17 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.PneumaticsBase;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Autonomous;
-import frc.robot.commands.DriveWithJoysticks;
+import frc.robot.commands.TeleOperated;
 import frc.robot.commands.FeederMove;
 import frc.robot.commands.Intake;
+import frc.robot.commands.MoveToShoot;
+import frc.robot.commands.Shoot;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Feeder;
+import frc.robot.subsystems.FinalFeed;
 import frc.robot.subsystems.IntakeWheels;
 import frc.robot.subsystems.Pneumatics;
+import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -29,7 +33,7 @@ public class RobotContainer {
 
   //Drivetrian declair
   private final DriveTrain driveTrain;
-  private final DriveWithJoysticks driveWithJoysticks;
+  private final TeleOperated driveWithJoysticks;
   private final Autonomous driveForwardTimed;
   public static XboxController xBoxController;
 
@@ -38,6 +42,10 @@ public class RobotContainer {
   private final Intake m_intake = new Intake(m_pneumatics, m_intakeWheels);
   private final Feeder m_feeder = new Feeder();
   private final FeederMove m_moveFeed ;
+  private final FinalFeed m_finalFeed = new FinalFeed();
+  private final Shooter m_shooter = new Shooter();
+  private final MoveToShoot m_moveToShoot;
+  private final Shoot m_shoot;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() 
@@ -45,14 +53,15 @@ public class RobotContainer {
     xBoxController = new XboxController(Constants.XBOX_USB_NUMBER);
 
     driveTrain = new DriveTrain();
-    driveWithJoysticks = new DriveWithJoysticks(driveTrain, xBoxController);
+    driveWithJoysticks = new TeleOperated(driveTrain, xBoxController);
     driveWithJoysticks.addRequirements(driveTrain);
     driveTrain.setDefaultCommand(driveWithJoysticks);
 
     driveForwardTimed = new Autonomous(driveTrain, m_intakeWheels,m_pneumatics );
     driveForwardTimed .addRequirements(driveTrain);
 
-   m_moveFeed = new FeederMove(m_feeder, xBoxController.getPOV());
+    m_moveFeed = new FeederMove(m_feeder, xBoxController);
+    m_moveFeed = new MoveToShoot(m_finalFeed, xBoxController);
     // Configure the button bindings
     configureButtonBindings();
   }

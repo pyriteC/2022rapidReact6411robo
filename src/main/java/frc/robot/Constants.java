@@ -19,36 +19,37 @@ public final class Constants {
     public static final int FRONT_RIGHT_MOTOR = 2;
     public static final int BACK_RIGHT_MOTOR = 3;
     public static final int INTAKE_MOTOR = 4;
-    public static final int SIDE_TOWER_MOTOR = 5;
-    public static final int BOTTOM_TOWER_MOTOR = 6;
-    public static final int TURRET_MOTOR = 7;
+    public static final int SHOOT_MOTOR = 5;
+    public static final int TURRET_MOTOR = 6;
+    public static final int SIDE_TOWER_MOTOR = 7;
+    public static final int FINAL_FEED_MOTOR = 8;
+
 
     public static final int SOLENOID_ID_1 = 0;
     public static final int SOLENOID_ID_2 = 1;
 
-    public static final int JOYSTICK_RIGHT_USB_NUMBER = 0;
-    public static final int JOYSTICK_LEFT_USB_NUMBER = 1;
+    public static final int XBOX_USB_NUMBER = 0;
 
     public static final int XBOX_LEFT_Y_AXIS = 1;
-    public static final int XBOX_LEFT_X_AXIS = 0;
-    public static final int XBOX_RIGHT_Y_AXIS = 1;
-    public static final int XBOX_RIGHT_X_AXIS = 0;
-    public static final int XBOX_SLIDER_AXIS = 3;
+    public static final int XBOX_RIGHT_Y_AXIS = 5;
+    public static final int RIGHT_TRIGGER = 3;
+    public static final int FEED_BUTTON = 1;
+    public static final int INTAKE_BUTTON = 1;
 
-    public static final int FEED_BUTTON = 2;
-    public static final int INTAKE_BUTTON = 3;
-
-    public static final double DRIVE_TRAIN_SPEED = .7;
+    public static final double DRIVE_TRAIN_SPEED = 0.7;
     public static final double AUTOMOUS_SPEED = 0.4;
     public static final double TURN_RAD = 1.0;
     public static final double TELEOP_SPEED = .75; 
     public static final double INTAKE_SPEED = .5;
-    public static final double STOP_MOTOR = 0;
+    public static final double STOP_MOTOR = 0.0;
     public static final double FEEDER_SPEED = 0.5;
     public static final double TURRET_SPEED = 0.1;
+    public static final double FINAL_FEED_SPEED = 0.4;
+    public static final double SHOOT_SPEED = .7;
 
-    public static final double AUTO_INTAKE_TIME = 0;
+    public static final double TARGET_AXIS = 0.5;
+
+    public static final double AUTO_INTAKE_TIME = 2.0;
     public static final double DRIVE_FORWARD_TIME = 3.0;
-
 
 }

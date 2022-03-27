@@ -6,54 +6,45 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Feeder;
+import frc.robot.Constants;
+import frc.robot.subsystems.Shooter;
 
-public class FeederMove extends CommandBase {
-  /** Creates a new FeederMove. */
-  private Feeder m_feeder;
-  private int DPad;
+public class Shoot extends CommandBase {
+  private Shooter shooter;
   private XboxController xboxController;
-  public FeederMove(Feeder feed, XboxController POV) 
-  {
+  /** Creates a new shoot. */
+  public Shoot(Shooter shooter, XboxController  xboxController) {
     // Use addRequirements() here to declare subsystem dependencies.
-    xboxController = POV;
-    m_feeder = feed;
-    addRequirements(m_feeder);;
+    this.shooter = shooter;
+    this.xboxController = xboxController;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() 
   {
-    
-  }
 
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() 
   {
-    DPad = xboxController.getPOV();
-    if (DPad == 0|| DPad == 7 || DPad == 1 )
+    if(xboxController.getRawAxis(Constants.LEFT_TRIGGER) > .1)
     {
-      m_feeder.setSideMotorSpeedUp();
-    }
-    else if (DPad == 4 || DPad == 5 || DPad == 6)
-    {
-      m_feeder.setSideMotorSpeedDown();
+      shooter.setShootSpeed();
     }
     else 
     {
-      m_feeder.stopSideMotor();
+      shooter.stopShoot();
     }
-
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) 
   {
-    m_feeder.stopSideMotor();
+    shooter.stopShoot();
   }
 
   // Returns true when the command should end.

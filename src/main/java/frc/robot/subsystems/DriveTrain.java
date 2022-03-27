@@ -48,13 +48,13 @@ public class DriveTrain extends SubsystemBase
  
   public void driveWithArcade(XboxController controller, double speed)
   {
-    drive.arcadeDrive(controller.getRawAxis(Constants.XBOX_LEFT_Y_AXIS)*speed, controller.getRawAxis(Constants.XBOX_LEFT_X_AXIS)*speed);
+    //drive.arcadeDrive(controller.getRawAxis(Constants.XBOX_LEFT_AXIS)*speed, controller.getRawAxis(Constants.XBOX_LEFT_AXIS)*speed);
     
   }
 
   public void driveWithTank(XboxController controller, double speed)
   {
-    drive.tankDrive(controller.getRawAxis(Constants.XBOX_LEFT_Y_AXIS)*speed, controller.getRawAxis(Constants.XBOX_RIGHT_Y_AXIS)*speed);
+    //drive.tankDrive(controller.getRawAxis(Constants.XBOX_LEFT_AXIS)*speed, controller.getRawAxis(Constants.XBOX_RIGHT_AXIS)*speed);
   }
 
   public void setRightMotor(double speed) {

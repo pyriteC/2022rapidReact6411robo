@@ -40,7 +40,7 @@ public final class Constants {
     public static final double AUTOMOUS_SPEED = 0.4;
     public static final double TURN_RAD = 1.0;
     public static final double TELEOP_SPEED = .75; 
-    public static final double INTAKE_SPEED = .5;
+    public static final double INTAKE_SPEED = -.5;
     public static final double STOP_MOTOR = 0.0;
     public static final double FEEDER_SPEED = 0.5;
     public static final double TURRET_SPEED = 0.1;
@@ -51,5 +51,6 @@ public final class Constants {
 
     public static final double AUTO_INTAKE_TIME = 2.0;
     public static final double DRIVE_FORWARD_TIME = 3.0;
+    public static final int LEFT_TRIGGER = 0;
 
 }

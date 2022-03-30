@@ -25,6 +25,12 @@ public class Turret extends SubsystemBase {
   {
     turretMotor.set(Constants.TURRET_SPEED * -1);
   }
+
+  public void stopTurret()
+  {
+    turretMotor.set(Constants.STOP_MOTOR);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

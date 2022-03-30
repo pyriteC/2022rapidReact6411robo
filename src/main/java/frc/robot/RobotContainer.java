@@ -45,7 +45,7 @@ public class RobotContainer {
   private final FinalFeed m_finalFeed = new FinalFeed();
   private final Shooter m_shooter = new Shooter();
   private final MoveToShoot m_moveToShoot;
-  private final Shoot m_shoot;
+  private final Shoot m_shoot ;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() 
@@ -61,7 +61,10 @@ public class RobotContainer {
     driveForwardTimed .addRequirements(driveTrain);
 
     m_moveFeed = new FeederMove(m_feeder, xBoxController);
-    m_moveFeed = new MoveToShoot(m_finalFeed, xBoxController);
+    m_moveToShoot= new MoveToShoot(m_finalFeed, xBoxController);
+
+    m_shoot = new Shoot(m_shooter, xBoxController);
+
     // Configure the button bindings
     configureButtonBindings();
   }

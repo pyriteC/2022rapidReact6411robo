@@ -33,7 +33,7 @@ public final class Constants {
     public static final int XBOX_LEFT_Y_AXIS = 1;
     public static final int XBOX_RIGHT_Y_AXIS = 5;
     public static final int RIGHT_TRIGGER = 3;
-    public static final int FEED_BUTTON = 1;
+    public static final int FEED_BUTTON = 2;
     public static final int INTAKE_BUTTON = 1;
 
     public static final double DRIVE_TRAIN_SPEED = 0.7;
@@ -42,7 +42,7 @@ public final class Constants {
     public static final double TELEOP_SPEED = .75; 
     public static final double INTAKE_SPEED = -.5;
     public static final double STOP_MOTOR = 0.0;
-    public static final double FEEDER_SPEED = 0.5;
+    public static final double FEEDER_SPEED = -0.5;
     public static final double TURRET_SPEED = 0.1;
     public static final double FINAL_FEED_SPEED = 0.4;
     public static final double SHOOT_SPEED = .7;

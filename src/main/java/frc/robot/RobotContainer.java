@@ -41,11 +41,11 @@ public class RobotContainer {
   private final Pneumatics m_pneumatics = new Pneumatics();
   private final Intake m_intake = new Intake(m_pneumatics, m_intakeWheels);
   private final Feeder m_feeder = new Feeder();
-  private final FeederMove m_moveFeed ;
+  private final FeederMove m_moveFeed = new FeederMove(m_feeder);
   private final FinalFeed m_finalFeed = new FinalFeed();
   private final Shooter m_shooter = new Shooter();
-  private final MoveToShoot m_moveToShoot;
-  private final Shoot m_shoot ;
+  private final MoveToShoot m_moveToShoot= new MoveToShoot(m_finalFeed);
+  private final Shoot m_shoot = new Shoot(m_shooter); ;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() 
@@ -60,10 +60,9 @@ public class RobotContainer {
     driveForwardTimed = new Autonomous(driveTrain, m_intakeWheels,m_pneumatics );
     driveForwardTimed .addRequirements(driveTrain);
 
-    m_moveFeed = new FeederMove(m_feeder, xBoxController);
-    m_moveToShoot= new MoveToShoot(m_finalFeed, xBoxController);
+  
 
-    m_shoot = new Shoot(m_shooter, xBoxController);
+ 
 
     // Configure the button bindings
     configureButtonBindings();
@@ -79,12 +78,17 @@ public class RobotContainer {
   {
     final JoystickButton intakeButton = new JoystickButton(xBoxController, Constants.INTAKE_BUTTON);
 
-     intakeButton.toggleWhenPressed(m_intake);
+    intakeButton.toggleWhenPressed(m_intake);
 
     final JoystickButton feederButton = new JoystickButton(xBoxController, Constants.FEED_BUTTON);
 
-    feederButton.toggleWhenPressed(m_moveFeed);
-    
+    feederButton.whenHeld(m_moveFeed);
+
+    final JoystickButton finalFeedButton = new JoystickButton(xBoxController, Constants.FINAL_FEED_BUTTON);
+    finalFeedButton.whenHeld(m_moveToShoot);
+
+    final JoystickButton shootButton = new JoystickButton(xBoxController, Constants.SHOOT_BUTTON);
+    shootButton.toggleWhenPressed(m_shoot);
   }
 
   /**

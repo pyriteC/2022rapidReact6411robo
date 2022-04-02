@@ -4,50 +4,32 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Feeder;
 
 public class FeederMove extends CommandBase {
   /** Creates a new FeederMove. */
   private Feeder m_feeder;
-  private int DPad;
-  private XboxController xboxController;
-  public FeederMove(Feeder feed, XboxController POV) 
+  public FeederMove(Feeder feed) 
   {
     // Use addRequirements() here to declare subsystem dependencies.
-    xboxController = POV;
+    System.out.println("it gets to the feeder command");
     m_feeder = feed;
-    addRequirements(m_feeder);;
+    addRequirements(m_feeder);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() 
   {
-    
+    m_feeder.setSideMotorSpeedUp();
   }
 
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() 
-  {
-    DPad = xboxController.getPOV();
-    if (DPad == 0|| DPad == 7 || DPad == 1 )
-    {
-      m_feeder.setSideMotorSpeedUp();
-    }
-    else if (DPad == 4 || DPad == 5 || DPad == 6)
-    {
-      m_feeder.setSideMotorSpeedDown();
-    }
-    else 
-    {
-      m_feeder.stopSideMotor();
-    }
-
-  }
+  {}
 
   // Called once the command ends or is interrupted.
   @Override

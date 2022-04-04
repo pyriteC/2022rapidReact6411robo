@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.*;
@@ -14,11 +15,16 @@ public class TargetingCommand extends CommandBase {
   private final Turret m_turret;
   private final int targetPipeline = 1;
   private final int lookPipeline = 0;
+  private final DigitalInput leftLimitSwitch;
+  private final DigitalInput rightLimitSwitch;
   public TargetingCommand(final LimeLightSub limeSub, final Turret turretSub) 
   {
     // Use addRequirements() here to declare subsystem dependencies.
     m_limeLightSub = limeSub;
     m_turret = turretSub;
+    leftLimitSwitch = new DigitalInput(Constants.LEFT_LIMIT_SWITCH);
+    rightLimitSwitch = new DigitalInput(Constants.RIGHT_LIMIT_SWITCH);
+
     //subsystem dependencies
     addRequirements(m_limeLightSub);
   }
@@ -35,16 +41,30 @@ public class TargetingCommand extends CommandBase {
 
   public void execute() {
     final double x = m_limeLightSub.getLimeLight().getdegRotationToTarget();
-    final double y = m_limeLightSub.getLimeLight().getdegVerticalToTarget();
-    if (x != 0 || y != 0){
-      if (x > Constants.TARGET_AXIS){
-        m_turret.turnRight();
-      }
-      else if (x < -Constants.TARGET_AXIS){
-        m_turret.turnLeft();
+
+    if (!(leftLimitSwitch.get()) && !(rightLimitSwitch.get()) )
+    {
+     if (x != 0 )
+     {
+        if (x > Constants.TARGET_AXIS)
+        {
+          m_turret.turnRight();
+        }
+        else if (x < -Constants.TARGET_AXIS)
+        {
+          m_turret.turnLeft();
         }
       }
     }
+    else if (leftLimitSwitch.get())
+    {
+      m_turret.turnRight();
+    }
+    else if (rightLimitSwitch.get())
+    {
+      m_turret.turnLeft();  
+    }
+  }
 
   // Called once the command ends or is interrupted.
   @Override

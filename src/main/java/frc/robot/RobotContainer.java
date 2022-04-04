@@ -11,11 +11,9 @@ import frc.robot.commands.Autonomous;
 import frc.robot.commands.TeleOperated;
 import frc.robot.commands.FeederMove;
 import frc.robot.commands.Intake;
-import frc.robot.commands.MoveToShoot;
 import frc.robot.commands.Shoot;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Feeder;
-import frc.robot.subsystems.FinalFeed;
 import frc.robot.subsystems.IntakeWheels;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Shooter;
@@ -42,9 +40,7 @@ public class RobotContainer {
   private final Intake m_intake = new Intake(m_pneumatics, m_intakeWheels);
   private final Feeder m_feeder = new Feeder();
   private final FeederMove m_moveFeed = new FeederMove(m_feeder);
-  private final FinalFeed m_finalFeed = new FinalFeed();
   private final Shooter m_shooter = new Shooter();
-  private final MoveToShoot m_moveToShoot= new MoveToShoot(m_finalFeed);
   private final Shoot m_shoot = new Shoot(m_shooter); ;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -83,9 +79,6 @@ public class RobotContainer {
     final JoystickButton feederButton = new JoystickButton(xBoxController, Constants.FEED_BUTTON);
 
     feederButton.whenHeld(m_moveFeed);
-
-    final JoystickButton finalFeedButton = new JoystickButton(xBoxController, Constants.FINAL_FEED_BUTTON);
-    finalFeedButton.toggleWhenPressed(m_moveToShoot);
 
     final JoystickButton shootButton = new JoystickButton(xBoxController, Constants.SHOOT_BUTTON);
     shootButton.toggleWhenPressed(m_shoot);

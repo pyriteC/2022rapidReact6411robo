@@ -11,25 +11,30 @@ import frc.robot.Constants;
 public class Feeder extends SubsystemBase {
   /** Creates a new Feeder. */
   private Victor sideMotor;
+  private Victor finalMotor;
   public Feeder() 
   {
     sideMotor = new Victor(Constants.SIDE_TOWER_MOTOR);
+    finalMotor = new Victor(Constants.FINAL_FEED_MOTOR);    
   } 
 
 
 public void setSideMotorSpeedUp()
 {
   sideMotor.set(Constants.FEEDER_SPEED);
+  finalMotor.set(Constants.FINAL_FEED_SPEED);
 }
 
 public void setSideMotorSpeedDown()
 {
   sideMotor.set(Constants.FEEDER_SPEED * -1);
+  finalMotor.set(Constant.FINAL_FEED_SPEED * -1);
 }
 
 public void stopSideMotor()
 {
   sideMotor.set(Constants.STOP_MOTOR);
+  finalMotor.set(Constant.STOP_MOTOR);
 }
 
   @Override

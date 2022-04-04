@@ -4,18 +4,14 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.subsystems.FinalFeed;
 
 public class MoveToShoot extends CommandBase {
   /** Creates a new MoveToShoot. */
   private FinalFeed m_finalFeed;
-  private XboxController xboxController;
-  public MoveToShoot(FinalFeed ff, XboxController xBox) {
+  public MoveToShoot(FinalFeed ff) {
     // Use addRequirements() here to declare subsystem dependencies.
-    xboxController = xBox;
     m_finalFeed = ff;
   }
 
@@ -27,19 +23,15 @@ public class MoveToShoot extends CommandBase {
   @Override
   public void execute() 
   {
-    if (xboxController.getRawAxis(Constants.RIGHT_TRIGGER) > .1)
-    {
       m_finalFeed.setFFMotor();
-    }
-    else 
-    {
-      m_finalFeed.stopMotor();
-    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) 
+  {
+    m_finalFeed.stopMotor();
+  }
 
   // Returns true when the command should end.
   @Override

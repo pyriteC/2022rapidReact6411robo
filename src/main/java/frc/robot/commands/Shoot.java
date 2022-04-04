@@ -4,19 +4,16 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.subsystems.Shooter;
 
 public class Shoot extends CommandBase {
   private Shooter shooter;
-  private XboxController xboxController;
+
   /** Creates a new shoot. */
-  public Shoot(Shooter shooter, XboxController  xboxController) {
+  public Shoot(Shooter shooter) {
     // Use addRequirements() here to declare subsystem dependencies.
     this.shooter = shooter;
-    this.xboxController = xboxController;
   }
 
   // Called when the command is initially scheduled.
@@ -30,14 +27,7 @@ public class Shoot extends CommandBase {
   @Override
   public void execute() 
   {
-    if(xboxController.getRawAxis(Constants.LEFT_TRIGGER) > .1)
-    {
       shooter.setShootSpeed();
-    }
-    else 
-    {
-      shooter.stopShoot();
-    }
   }
 
   // Called once the command ends or is interrupted.

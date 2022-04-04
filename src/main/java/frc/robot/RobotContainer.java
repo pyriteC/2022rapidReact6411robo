@@ -5,7 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.PneumaticsBase;
+
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Autonomous;
 import frc.robot.commands.TeleOperated;
@@ -85,7 +85,7 @@ public class RobotContainer {
     feederButton.whenHeld(m_moveFeed);
 
     final JoystickButton finalFeedButton = new JoystickButton(xBoxController, Constants.FINAL_FEED_BUTTON);
-    finalFeedButton.whenHeld(m_moveToShoot);
+    finalFeedButton.toggleWhenPressed(m_moveToShoot);
 
     final JoystickButton shootButton = new JoystickButton(xBoxController, Constants.SHOOT_BUTTON);
     shootButton.toggleWhenPressed(m_shoot);

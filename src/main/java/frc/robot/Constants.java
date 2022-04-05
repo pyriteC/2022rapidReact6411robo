@@ -37,6 +37,7 @@ public final class Constants {
     public static final int INTAKE_BUTTON = 1;
     public static final int FINAL_FEED_BUTTON = 3;
     public static final int SHOOT_BUTTON = 5;
+    public static final int SWITCH_FEEEDER_DIRECTION_BUTTON = 4;
 
     public static final double DRIVE_TRAIN_SPEED = 0.7;
     public static final double AUTOMOUS_SPEED = 0.4;
@@ -54,5 +55,7 @@ public final class Constants {
     public static final double AUTO_INTAKE_TIME = 2.0;
     public static final double DRIVE_FORWARD_TIME = 3.0;
     public static final int LEFT_TRIGGER = 0;
+    public static final int LEFT_LIMIT_SWITCH = 0;
+    public static final int RIGHT_LIMIT_SWITCH = 0;
 
 }

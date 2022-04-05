@@ -43,6 +43,9 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Shoot m_shoot = new Shoot(m_shooter); ;
 
+
+  private static int feedDirection = 1;
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() 
   {
@@ -93,4 +96,14 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     return driveForwardTimed;
   }
-}
+
+
+  public static int getFeedDirection()
+  {
+    return feedDirection;
+  }
+
+  public static void switchFeedDirection() 
+  {
+    feedDirection = feedDirection * -1;
+  }

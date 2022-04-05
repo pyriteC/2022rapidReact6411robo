@@ -22,7 +22,7 @@ public class FeederMove extends CommandBase {
   @Override
   public void initialize() 
   {
-    m_feeder.setSideMotorSpeedUp();
+    m_feeder.setSideMotorSpeed();
   }
 
 

@@ -46,7 +46,7 @@ public final class Constants {
     public static final double INTAKE_SPEED = -.6;
     public static final double STOP_MOTOR = 0.0;
     public static final double FEEDER_SPEED = -0.4;
-    public static final double TURRET_SPEED = 0.1;
+    public static final double TURRET_SPEED = 0.001;
     public static final double FINAL_FEED_SPEED = -0.5;
     public static final double SHOOT_SPEED = 1;
 

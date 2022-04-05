@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.motorcontrol.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 
 public class IntakeWheels extends SubsystemBase {
   /** Creates a new IntakeWheels. */
@@ -19,7 +20,7 @@ public IntakeWheels()
 
   public void setIntakeMotor()
   {
-    intakeMotor.set(Constants.INTAKE_SPEED);
+    intakeMotor.set(Constants.INTAKE_SPEED *RobotContainer.getFeedDirection());
   }
 
   public void stopIntakeMotor()

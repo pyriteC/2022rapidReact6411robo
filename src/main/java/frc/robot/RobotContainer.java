@@ -12,6 +12,7 @@ import frc.robot.commands.TeleOperated;
 import frc.robot.commands.FeederMove;
 import frc.robot.commands.Intake;
 import frc.robot.commands.Shoot;
+import frc.robot.commands.SwitchFeedDirection;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.IntakeWheels;
@@ -41,7 +42,8 @@ public class RobotContainer {
   private final Feeder m_feeder = new Feeder();
   private final FeederMove m_moveFeed = new FeederMove(m_feeder);
   private final Shooter m_shooter = new Shooter();
-  private final Shoot m_shoot = new Shoot(m_shooter); ;
+  private final Shoot m_shoot = new Shoot(m_shooter); 
+  private final SwitchFeedDirection m_switchFeedDirection = new SwitchFeedDirection();
 
 
   private static int feedDirection = 1;
@@ -85,6 +87,9 @@ public class RobotContainer {
 
     final JoystickButton shootButton = new JoystickButton(xBoxController, Constants.SHOOT_BUTTON);
     shootButton.toggleWhenPressed(m_shoot);
+
+    final JoystickButton switchFeederDirectionButton = new JoystickButton(xBoxController, Constants.SWITCH_FEEEDER_DIRECTION_BUTTON);
+    switchFeederDirectionButton.whileHeld(m_switchFeedDirection);
   }
 
   /**
@@ -107,3 +112,4 @@ public class RobotContainer {
   {
     feedDirection = feedDirection * -1;
   }
+}

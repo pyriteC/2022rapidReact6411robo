@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.motorcontrol.Victor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 
 public class Feeder extends SubsystemBase {
   /** Creates a new Feeder. */
@@ -19,22 +20,17 @@ public class Feeder extends SubsystemBase {
   } 
 
 
-public void setSideMotorSpeedUp()
+public void setSideMotorSpeed()
 {
-  sideMotor.set(Constants.FEEDER_SPEED);
-  finalMotor.set(Constants.FINAL_FEED_SPEED);
+  sideMotor.set(Constants.FEEDER_SPEED *RobotContainer.getFeedDirection());
+  finalMotor.set(Constants.FINAL_FEED_SPEED *RobotContainer.getFeedDirection());
 }
 
-public void setSideMotorSpeedDown()
-{
-  sideMotor.set(Constants.FEEDER_SPEED * -1);
-  finalMotor.set(Constant.FINAL_FEED_SPEED * -1);
-}
 
 public void stopSideMotor()
 {
   sideMotor.set(Constants.STOP_MOTOR);
-  finalMotor.set(Constant.STOP_MOTOR);
+  finalMotor.set(Constants.STOP_MOTOR);
 }
 
   @Override

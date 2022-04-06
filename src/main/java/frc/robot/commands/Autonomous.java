@@ -8,26 +8,37 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.IntakeWheels;
 import frc.robot.subsystems.Pneumatics;
+import frc.robot.subsystems.Shooter;
 
 public class Autonomous extends CommandBase {
   private DriveTrain driveTrain;
   private boolean finish = false;
   private IntakeWheels intakeWheels;
   private Pneumatics inPnuematics;
+  private Feeder feeder;
+  private Shooter shooter;
+
   private Timer moveTimer;
-  private Timer intakeTimer;
+  private Timer moveBack;
+  private Timer feedTime;
+
   /** Creates a new DriveForwardTimed. */
-  public Autonomous(DriveTrain dt, IntakeWheels iw, Pneumatics pn) 
+  public Autonomous(DriveTrain dt, IntakeWheels iw, Pneumatics pn, Feeder feeder, Shooter shooter) 
   {
 
     driveTrain = dt;
     intakeWheels  = iw;
     inPnuematics = pn;
-    addRequirements(driveTrain, intakeWheels, inPnuematics);
+    this.feeder = feeder;
+    this.shooter = shooter;
+    addRequirements(driveTrain, intakeWheels, inPnuematics, this.feeder);
     moveTimer = new Timer();
-    intakeTimer = new Timer();
+    moveBack = new Timer();
+    feedTime = new Timer();
+
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -37,20 +48,31 @@ public class Autonomous extends CommandBase {
   {
     moveTimer.reset();
     moveTimer.start();
-    intakeTimer.reset();
+    moveBack.reset();
+    inPnuematics.solenoidUp();
+    intakeWheels.setIntakeMotor();
     while(moveTimer.get() < Constants.DRIVE_FORWARD_TIME)
     {
       driveTrain.driveForward(Constants.AUTOMOUS_SPEED);
     }
-    intakeTimer.start();
-    while(intakeTimer.get()< Constants.AUTO_INTAKE_TIME)
+    moveBack.start();
+    intakeWheels.stopIntakeMotor();
+    inPnuematics.solenoidDown();
+    while(moveBack.get() < Constants.AUTO_INTAKE_TIME)
+    {
+      driveTrain.driveForward(Constants.AUTOMOUS_SPEED * -1);
+    }
+    feeder.setSideMotorSpeed();
+    shooter.setShootSpeed();
+    while(feedTime.get() < Constants.FEED_TIME)
+    {}
+    feeder.stopSideMotor();
+    shooter.stopShoot();
+    while(moveTimer.get() < Constants.DRIVE_OUT_TIME)
     {
       driveTrain.driveForward(Constants.AUTOMOUS_SPEED);
-      inPnuematics.solenoidUp();
-      intakeWheels.setIntakeMotor();
-
     }
-    finish = true;
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.

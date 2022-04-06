@@ -58,7 +58,7 @@ public class RobotContainer {
     driveWithJoysticks.addRequirements(driveTrain);
     driveTrain.setDefaultCommand(driveWithJoysticks);
 
-    driveForwardTimed = new Autonomous(driveTrain, m_intakeWheels,m_pneumatics );
+    driveForwardTimed = new Autonomous(driveTrain, m_intakeWheels,m_pneumatics, m_feeder, m_shooter );
     driveForwardTimed .addRequirements(driveTrain);
 
   

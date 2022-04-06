@@ -49,13 +49,15 @@ public final class Constants {
     public static final double TURRET_SPEED = 0.001;
     public static final double FINAL_FEED_SPEED = 0.5;
     public static final double SHOOT_SPEED = 1;
+    public static final int LEFT_LIMIT_SWITCH = 0;
+    public static final int RIGHT_LIMIT_SWITCH = 0;
 
     public static final double TARGET_AXIS = 0.5;
 
-    public static final double AUTO_INTAKE_TIME = 2.0;
-    public static final double DRIVE_FORWARD_TIME = 3.0;
-    public static final int LEFT_TRIGGER = 0;
-    public static final int LEFT_LIMIT_SWITCH = 0;
-    public static final int RIGHT_LIMIT_SWITCH = 0;
+    public static final double AUTO_INTAKE_TIME = 0.0;
+    public static final double DRIVE_FORWARD_TIME = 1.0;
+
+    public static final double FEED_TIME = 0;
+    public static final double DRIVE_OUT_TIME = 0;
 
 }

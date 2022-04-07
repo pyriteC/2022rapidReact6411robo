@@ -47,27 +47,32 @@ public class Autonomous extends CommandBase {
   public void initialize() 
   {
     moveTimer.reset();
-    moveTimer.start();
     moveBack.reset();
+    feedTime.reset();
+    moveTimer.start();
     inPnuematics.solenoidUp();
     intakeWheels.setIntakeMotor();
-    while(moveTimer.get() < Constants.DRIVE_FORWARD_TIME)
+    while(moveTimer.get() < 3)
     {
-      driveTrain.driveForward(Constants.AUTOMOUS_SPEED);
+      driveTrain.driveForward(.5);
     }
+    driveTrain.stop();
     moveBack.start();
     intakeWheels.stopIntakeMotor();
     inPnuematics.solenoidDown();
-    while(moveBack.get() < Constants.AUTO_INTAKE_TIME)
+    while(moveBack.get() < Constants.DRIVE_BACK_TIME)
     {
       driveTrain.driveForward(Constants.AUTOMOUS_SPEED * -1);
     }
     feeder.setSideMotorSpeed();
     shooter.setShootSpeed();
+    feedTime.start();
     while(feedTime.get() < Constants.FEED_TIME)
     {}
     feeder.stopSideMotor();
     shooter.stopShoot();
+    moveTimer.reset();
+    moveTimer.start();
     while(moveTimer.get() < Constants.DRIVE_OUT_TIME)
     {
       driveTrain.driveForward(Constants.AUTOMOUS_SPEED);

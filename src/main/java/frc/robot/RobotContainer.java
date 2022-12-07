@@ -11,11 +11,13 @@ import frc.robot.commands.Autonomous;
 import frc.robot.commands.TeleOperated;
 import frc.robot.commands.FeederMove;
 import frc.robot.commands.Intake;
+import frc.robot.commands.Lift;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.SwitchFeedDirection;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Feeder;
 import frc.robot.subsystems.IntakeWheels;
+import frc.robot.subsystems.Lifter;
 import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -44,7 +46,9 @@ public class RobotContainer {
   private final Shooter m_shooter = new Shooter();
   private final Shoot m_shoot = new Shoot(m_shooter); 
   private final SwitchFeedDirection m_switchFeedDirection = new SwitchFeedDirection();
-
+  private final Lifter m_lifter = new Lifter();
+  private final Lift m_liftUp = new Lift(m_lifter, true);
+  private final Lift m_liftDown = new Lift(m_lifter, false);
 
   private static int feedDirection = 1;
 
@@ -90,6 +94,12 @@ public class RobotContainer {
 
     final JoystickButton switchFeederDirectionButton = new JoystickButton(xBoxController, Constants.SWITCH_FEEEDER_DIRECTION_BUTTON);
     switchFeederDirectionButton.whileHeld(m_switchFeedDirection);
+
+    final JoystickButton LiftUpButton = new JoystickButton(xBoxController, Constants.LIFT_UP_BUTTON);
+    LiftUpButton.whenHeld(m_liftUp);
+
+    final JoystickButton LiftDownButton = new JoystickButton(xBoxController, Constants.LIFT_DOWN_BUTTON);
+    LiftUpButton.whenHeld(m_liftDown);
   }
 
   /**

@@ -51,8 +51,8 @@ public class TeleOperated extends CommandBase
      // rightStickX = Constants.TELEOP_SPEED * getDriverRawAxisRightX(Constants.XBOX_RIGHT_AXIS) * -1 ;
       leftStickY = Constants.TELEOP_SPEED * getDriverRawAxisLeftY(Constants.XBOX_LEFT_Y_AXIS)* -1 ;
      // leftStickX = Constants.TELEOP_SPEED * getDriverRawAxisLeftX(Constants.XBOX_LEFT_AXIS)* -1 ;
-      //driveTrain.actualArcadeDrive(rightStickY, rightStickX);
-      driveTrain.actualTankDrive(leftStickY, rightStickY);
+      driveTrain.actualArcadeDrive(rightStickY, rightStickX);//this one is a test
+     // driveTrain.actualTankDrive(leftStickY, rightStickY); THISS CONFIRMED WORKS 
       //  driveTrain.setLeftMotor(leftStickY);
       //  driveTrain.setRightMotor(rightStickY);
     /*rookie solution arcade

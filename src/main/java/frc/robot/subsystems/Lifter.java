@@ -20,11 +20,11 @@ public class Lifter extends SubsystemBase {
   {
     if (upDown)
     {
-    liftMotor.set(Constants.LIFT_SPEED_UP);
+    liftMotor.set(Constants.LIFT_SPEED_UP);//maybe switch
     }
     else 
     {
-      liftMotor.set(Constants.LIFT_SPEED_UP *-1);
+      liftMotor.set(Constants.LIFT_SPEED_UP *-1);//maybe swtch
     }
   }
 

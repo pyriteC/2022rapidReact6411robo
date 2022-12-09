@@ -25,6 +25,7 @@ public final class Constants {
     public static final int FINAL_FEED_MOTOR = 8;
     public static final int LEFT_LIMIT_SWITCH = 0;
     public static final int RIGHT_LIMIT_SWITCH = 0;
+    public static final int LIFT_MOTOR = 0;//ATTENTTION
 
 
     public static final int SOLENOID_ID_1 = 0;
@@ -40,6 +41,8 @@ public final class Constants {
     public static final int FINAL_FEED_BUTTON = 3;
     public static final int SHOOT_BUTTON = 5;
     public static final int SWITCH_FEEEDER_DIRECTION_BUTTON = 4;
+    public static final int LIFT_UP_BUTTON = 0;//ATTENTION
+    public static final int LIFT_DOWN_BUTTON = 0;//ATTENTION
 
     public static final double DRIVE_TRAIN_SPEED = 1;
     public static final double AUTOMOUS_SPEED = .8;
@@ -51,7 +54,7 @@ public final class Constants {
     public static final double TURRET_SPEED = 0.001;
     public static final double FINAL_FEED_SPEED = 0.5;
     public static final double SHOOT_SPEED = 1;
- 
+    public static final double LIFT_SPEED_UP = .05;//ATTENTION
 
     public static final double TARGET_AXIS = 0.5;
 
@@ -62,5 +65,8 @@ public final class Constants {
     public static final double DRIVE_BACK_TIME = 50/IN_PER_SEC;
     public static final double FEED_TIME = 5;
     public static final double DRIVE_OUT_TIME = 110 / IN_PER_SEC;
+
+
+
 
 }
